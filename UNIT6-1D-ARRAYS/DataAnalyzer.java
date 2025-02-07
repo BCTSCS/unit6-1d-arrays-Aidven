@@ -51,6 +51,7 @@ public class DataAnalyzer{
         for(int i = 0; i< newArr.length; i++){
             System.out.print(newArr[i] + " ");
         }
+        System.out.println("");
 
         int[] fileArr = new int[100];
         try{
@@ -63,7 +64,13 @@ public class DataAnalyzer{
             System.out.println("file not found");
         }
 
+        //linear search
         System.out.println(searchList(fileArr,81));
+
+        //binary search
+        System.out.println(searchList(81, fileArr));
+
+        //reverse list
         int[] reverseArr = reverseList(fileArr);
         for(int i=0; i < reverseArr.length; i++){
             System.out.print(reverseArr[i] + " ");
