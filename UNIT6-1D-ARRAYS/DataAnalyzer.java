@@ -43,6 +43,36 @@ public class DataAnalyzer{
         }
         return -1;
     }
+
+    public static int getMax(int[] numbers){
+        int maxNum = numbers[0];
+        for(int num : numbers){
+          if(num>maxNum){
+            maxNum = num;
+          }
+        }
+        return maxNum;
+    }
+    public static int[] ascendOrDescend(int[] arr, int flip){
+        // if flip = 1, sorts in ascending order
+        // if flip = 0, sorts in descending order
+        int temp;
+        for(int i = 0; i < arr.length-1; i++){
+            for(int j = i+1; j< arr.length; j++){
+                if (arr[j] > arr[i]){
+                    temp = arr[j];
+                    arr[j] = arr[i];
+                    arr[i] = temp;
+                }
+            }
+        }
+        if(flip == 1){
+            return reverseList(arr);
+        }
+        else{
+            return arr;
+        }
+    }
     public static void main(String[] args){
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
         System.out.println(searchList(arr ,5));
@@ -74,5 +104,12 @@ public class DataAnalyzer{
         int[] reverseArr = reverseList(fileArr);
         for(int i=0; i < reverseArr.length; i++){
             System.out.print(reverseArr[i] + " ");
+
+
+        FileOperator reader = new FileOperator("numbers.txt");
+        String[] nums = reader.toStringArray(10);
+        for(String n : nums){
+            System.out.print(n + " ");
+        }
     }
 }}

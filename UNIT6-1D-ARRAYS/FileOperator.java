@@ -1,7 +1,6 @@
-package UNIT6-1D-ARRAYS;
-import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 public class FileOperator {
    private Scanner fileReader;
@@ -10,6 +9,7 @@ public class FileOperator {
    public FileOperator(String filename) {
     setFile(filename);
   }
+
     public void setFile(String filename) {
         myFile = new File(filename);
         try {
@@ -41,6 +41,14 @@ public class FileOperator {
            arr[i]=fileReader.nextLine();
          } 
         return arr;
+    }
+
+    public static void main(String[] args){
+        FileOperator file1 = new FileOperator("capacities.txt");
+        int[] capacities = file1.toIntArray(30);
+        for(int num : capacities){
+          System.out.print(num + " ");
+        }
     }
 }
 
