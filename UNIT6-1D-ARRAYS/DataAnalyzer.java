@@ -35,7 +35,7 @@ public class DataAnalyzer{
     }
     public static int searchList(int[] numbers, int target){
         int index = 0;
-        while(index<=numbers.length){
+        while(index<=numbers.length - 1){
             if(numbers[index] == target){
                 return index;
             }
@@ -53,6 +53,17 @@ public class DataAnalyzer{
         }
         return maxNum;
     }
+
+    public static int getMin(int[] numbers){
+        int minNum = numbers[0];
+        for(int num : numbers){
+          if(num<minNum){
+            minNum = num;
+          }
+        }
+        return minNum;
+    }
+
     public static int[] ascendOrDescend(int[] arr, int flip){
         // if flip = 1, sorts in ascending order
         // if flip = 0, sorts in descending order
@@ -85,12 +96,12 @@ public class DataAnalyzer{
 
         int[] fileArr = new int[100];
         try{
-            File f = new File("numbers.txt");
+            File f = new File("UNIT6-1D-ARRAYS/numbers.txt");
             Scanner scan = new Scanner(f);
             for(int i=0; i<100; i++){
                 fileArr[i] = scan.nextInt();
             }
-        }catch(IOException e){
+        }catch(IOException f){
             System.out.println("file not found");
         }
 
@@ -102,14 +113,19 @@ public class DataAnalyzer{
 
         //reverse list
         int[] reverseArr = reverseList(fileArr);
-        for(int i=0; i < reverseArr.length; i++){
+        for(int i=0; i < reverseArr.length -1; i++){
             System.out.print(reverseArr[i] + " ");
 
 
-        FileOperator reader = new FileOperator("numbers.txt");
-        String[] nums = reader.toStringArray(10);
-        for(String n : nums){
-            System.out.print(n + " ");
+        FileOperator file1 = new FileOperator("UNIT6-1D-ARRAYS/capacities.txt");
+       int[] capacities = file1.toIntArray(30);
+        for(int num : capacities){
+              System.out.print(num + " ");
         }
+
+        System.out.println("");
+        System.out.println(getMax(capacities));
+        System.out.println(getMin(capacities));
+        int[] OrderedCapacities = ascendOrDescend(capacities, 1);
     }
 }}

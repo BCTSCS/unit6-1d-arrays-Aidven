@@ -7,7 +7,7 @@ public class FileOperator {
    private File myFile;
   
    public FileOperator(String filename) {
-    setFile(filename);
+      setFile(filename);
   }
 
     public void setFile(String filename) {
@@ -43,12 +43,5 @@ public class FileOperator {
         return arr;
     }
 
-    public static void main(String[] args){
-        FileOperator file1 = new FileOperator("capacities.txt");
-        int[] capacities = file1.toIntArray(30);
-        for(int num : capacities){
-          System.out.print(num + " ");
-        }
-    }
 }
 
