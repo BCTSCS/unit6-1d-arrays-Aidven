@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.*;
 
 public class FileOperator {
    private Scanner fileReader;
@@ -43,5 +44,33 @@ public class FileOperator {
         return arr;
     }
 
+    public ArrayList<String> toStringList(){
+        ArrayList<String> result = new ArrayList<>();
+
+        while(fileReader.hasNextLine()){
+            result.add(fileReader.nextLine());
+        }
+        return result;
+    }
+
+
+    public ArrayList<Integer> toIntList(){
+        ArrayList<Integer> result = new ArrayList<>();
+
+        while(fileReader.hasNextInt()){
+            result.add(fileReader.nextInt());
+        }
+        return result;
+    }
+
+
+    public ArrayList<Double> toDoubleList(){
+        ArrayList<Double> result = new ArrayList<>();
+
+        while(fileReader.hasNextDouble()){
+            result.add(fileReader.nextDouble());
+        }
+        return result;
+    }
 }
 

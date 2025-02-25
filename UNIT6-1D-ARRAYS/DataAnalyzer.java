@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.*;
 
 public class DataAnalyzer{
     //reverse list
@@ -64,6 +65,19 @@ public class DataAnalyzer{
         return minNum;
     }
 
+    public static String[] arenaByCapacity(int[] capacities, String[] arenas, int capacity, int flip){
+        // if flip = 1, for greater than
+        // if flip = 0, for less than
+        String[] arenaCapacities;
+        if(flip == 0){
+            for(int i = 0; i < capacities.length-1; i++){
+                if(capacities[i] <= capacity){
+                    
+                }
+            }
+        }
+        return arenas;
+    }
     public static int[] ascendOrDescend(int[] arr, int flip){
         // if flip = 1, sorts in ascending order
         // if flip = 0, sorts in descending order
@@ -118,7 +132,7 @@ public class DataAnalyzer{
 
 
         FileOperator file1 = new FileOperator("UNIT6-1D-ARRAYS/capacities.txt");
-       int[] capacities = file1.toIntArray(30);
+        int[] capacities = file1.toIntArray(30);
         for(int num : capacities){
               System.out.print(num + " ");
         }
@@ -127,5 +141,11 @@ public class DataAnalyzer{
         System.out.println(getMax(capacities));
         System.out.println(getMin(capacities));
         int[] OrderedCapacities = ascendOrDescend(capacities, 1);
+
+        FileOperator input = new FileOperator("UNIT6-1D-ARRAYS/college.txt");
+        ArrayList<String> colleges = input.toStringList();
+        for(String college : colleges){
+            System.out.print(college + " ");
+        }
     }
 }}
