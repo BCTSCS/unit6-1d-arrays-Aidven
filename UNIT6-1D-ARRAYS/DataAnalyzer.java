@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.*;
 
 public class DataAnalyzer{
@@ -98,6 +97,153 @@ public class DataAnalyzer{
             return arr;
         }
     }
+
+    public static String[] arenaSearch(String[] list, String target, FileOperator file){
+        ArrayList<Integer> indices = new ArrayList<>();
+        for(int i = 0; i<list.length; i++){
+            if(list[i].equals(target)){
+                indices.add(i);
+            }
+        }
+
+        String[] arenaNames = file.toStringArray(30);
+        String[] arenas = new String[indices.size()];
+
+        for(int i =0; i< indices.size(); i++){
+            arenas[i] = arenaNames[indices.get(i)];
+        }
+        return arenas;
+    }
+
+    public static String[] arenasByTeam(String target, FileOperator file){
+        FileOperator fileTeam = new FileOperator("UNIT6-1D-ARRAYS/teams.txt");
+        String[] foundList = fileTeam.toStringArray(30);
+        String[] arenas = arenaSearch(foundList, target, file);        
+        
+        return arenas;
+    }
+
+    public static String[] arenasByLocation(String target, FileOperator file){
+        FileOperator fileLocation = new FileOperator("UNIT6-1D-ARRAYS/locations.txt");
+        String[] foundList = fileLocation.toStringArray(30);
+        String[] arenas = arenaSearch(foundList, target, file);        
+        
+        return arenas;
+    }
+    
+    public static String[] arenasByCapacity(String target, FileOperator file){
+        FileOperator fileCapacity = new FileOperator("UNIT6-1D-ARRAYS/capacities.txt");
+        String[] foundList = fileCapacity.toStringArray(30);
+        String[] arenas = arenaSearch(foundList, target, file);        
+        
+        return arenas;
+    }
+    
+    public static String[] arenasByChampionships(String target, FileOperator file){
+        FileOperator fileChampionships= new FileOperator("UNIT6-1D-ARRAYS/championships.txt");
+        String[] foundList = fileChampionships.toStringArray(30);
+        String[] arenas = arenaSearch(foundList, target, file);        
+        
+        return arenas;
+    }
+
+    public static String findMostCommonArena(FileOperator file) {
+        FileOperator fileLocations = new FileOperator("UNIT6-1D-ARRAYS/locations.txt");
+        ArrayList<String> locations = fileLocations.toStringList();
+
+        List<String> locationList = new ArrayList<>();
+        List<Integer> countList = new ArrayList<>();
+        
+        for (String location : locations) {
+            if (locationList.contains(location)) {
+                int index = locationList.indexOf(location);
+                countList.set(index, countList.get(index) + 1);
+            } else {
+                locationList.add(location);
+                countList.add(1);
+            }
+        }
+        
+        int maxIndex = 0;
+        for (int i = 1; i < countList.size(); i++) {
+            if (countList.get(i) > countList.get(maxIndex)) {
+                maxIndex = i;
+            }
+        }
+        
+        return locationList.get(maxIndex);
+    }
+    
+    public static String largestArena(FileOperator file){
+        FileOperator fileNames = new FileOperator("UNIT6-1D-ARRAYS/arenas.txt");
+        FileOperator fileCapacities = new FileOperator("UNIT6-1D-ARRAYS/capacities.txt");
+        String[] arenas = fileNames.toStringArray(30);
+        int[] capacities = fileCapacities.toIntArray(30);
+        int max_size = capacities[0];
+        String largest_arena = arenas[0];
+
+        for(int i = 0 ; i < arenas.length; i++){
+            if(capacities[i] > max_size){
+                max_size = capacities[i];
+                largest_arena = arenas[i];
+            }
+        }
+        return largest_arena;
+
+    }
+
+    public static String[] minChampionships(FileOperator file){
+        ArrayList<String> min_teams = new ArrayList<String>();
+        ArrayList<Integer> min_championships = new ArrayList<Integer>();
+
+        FileOperator fileTeams = new FileOperator("UNIT6-1D-ARRAYS/teams.txt");
+        FileOperator fileChampionships = new FileOperator("UNIT6-1D-ARRAYS/championships.txt");
+
+        String[] arenas = fileTeams.toStringArray(30);
+        int[] championships = fileChampionships.toIntArray(30);
+
+        min_teams.add(arenas[0]);
+        min_championships.add(championships[0]);
+
+        for(int i = 0; i < arenas.length; i++){
+            if(championships[i] < min_championships.get(0)){
+                min_teams.clear();
+                min_championships.clear();
+                min_teams.add(arenas[i]);
+                min_championships.add(championships[i]);
+            }
+            else if(championships[i] == min_championships.get(0)){
+                min_teams.add(arenas[i]);
+                min_championships.add(championships[i]);
+            }
+            
+        }
+        return min_teams.toArray(new String[0]);
+    }
+
+    public static int[] capacityByCity(String target, FileOperator file){
+        FileOperator fileNames = new FileOperator("UNIT6-1D-ARRAYS/arenas.txt");
+        FileOperator fileCapacities = new FileOperator("UNIT6-1D-ARRAYS/capacities.txt");
+
+        String[] arenas = fileNames.toStringArray(30);
+        ArrayList<Integer> final_capacities = new ArrayList<>();
+
+        int[] capacities = fileCapacities.toIntArray(30);
+
+        for (int i = 0; i < arenas.length; i++){
+            if(arenas[i].equals(target)){
+                final_capacities.add(capacities[i]);
+            }
+        }
+        int[] new_capacities = new int[final_capacities.size()];
+        
+        for(int i = 0; i < new_capacities.length; i++){
+            new_capacities[i] = final_capacities.get(i);
+        }
+        return new_capacities;
+
+    }
+
     public static void main(String[] args){
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
         System.out.println(searchList(arr ,5));
