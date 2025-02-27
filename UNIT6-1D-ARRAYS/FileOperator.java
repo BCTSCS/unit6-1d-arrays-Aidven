@@ -17,6 +17,7 @@ public class FileOperator {
         fileReader = new Scanner(myFile);
         } catch(FileNotFoundException error) {
               System.out.println("File not found.");
+              fileReader = null;
         }
     }
  
