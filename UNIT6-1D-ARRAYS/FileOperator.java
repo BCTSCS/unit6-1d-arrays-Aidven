@@ -13,7 +13,7 @@ public class FileOperator {
 
     public void setFile(String filename) {
         myFile = new File(filename);
-        System.out.println(myFile.getAbsolutePath());
+        System.out.println(myFile);
         try {
         fileReader = new Scanner(myFile);
         } catch(FileNotFoundException error) {

@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.*;
 
 public class DataAnalyzer{
-    private static FileOperator input = new FileOperator("arenas.txt");
+    private static FileOperator input = new FileOperator("UNIT6-1D-ARRAYS/arenas.txt");
     //reverse list
     public static int[] reverseList(int[] numbers){
         int[] tempList = new int[numbers.length];
@@ -144,22 +144,22 @@ public class DataAnalyzer{
         // }
         // System.out.println("");
 
-        int[] fileArr = new int[100];
-        try{
-            File f = new File("numbers.txt");
-            Scanner scan = new Scanner(f);
-            for(int i=0; i<100; i++){
-                fileArr[i] = scan.nextInt();
-            }
-        }catch(IOException f){
-            System.out.println("file not found");
-        }
+        // int[] fileArr = new int[100];
+        // try{
+        //     File f = new File("numbers.txt");
+        //     Scanner scan = new Scanner(f);
+        //     for(int i=0; i<100; i++){
+        //         fileArr[i] = scan.nextInt();
+        //     }
+        // }catch(IOException f){
+        //     System.out.println("file not found");
+        // }
 
-        //linear search
-        System.out.println(searchList(fileArr,81));
+        // //linear search
+        // System.out.println(searchList(fileArr,81));
 
-        //binary search
-        System.out.println(searchList(81, fileArr));
+        // //binary search
+        // System.out.println(searchList(81, fileArr));
 
         //reverse list
         // int[] reverseArr = reverseList(fileArr);

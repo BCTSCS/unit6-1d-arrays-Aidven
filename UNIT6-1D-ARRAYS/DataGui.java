@@ -21,6 +21,7 @@ public class DataGui extends JFrame {
         inputField = new JTextField(20);
         JButton analyzeCapacityButton = new JButton("Analyze by Capacity");
         JButton capacityByCityButton = new JButton("Get Capacity by City");
+        JButton saveScreenButton = new JButton("Save Screen");
         resultsArea = new JTextArea(10, 40);
         resultsArea.setEditable(false);
 
@@ -28,9 +29,11 @@ public class DataGui extends JFrame {
         add(analyzeCapacityButton);
         add(capacityByCityButton);
         add(new JScrollPane(resultsArea));
+        add(saveScreenButton);
 
         analyzeCapacityButton.addActionListener(e -> analyzeByCapacity());
         capacityByCityButton.addActionListener(e -> analyzeCapacityByCity());
+        saveScreenButton.addActionListener(e -> saveScreen());
 
         }
     public static String string(String[] arr) {
