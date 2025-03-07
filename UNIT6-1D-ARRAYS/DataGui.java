@@ -55,11 +55,11 @@ public class DataGui extends JFrame {
     private void analyzeByCapacity(){
         String[] arenas = DataAnalyzer.arenasByCapacity((inputField.getText()));
 
-        resultsArea.setText("Arenas by Capacity " + inputField.getText() + ": \n" + string(arenas) + "\n");
+        resultsArea.setText("Arenas by Capacity " + inputField.getText() + ": \n" + "-------------------- \n" + string(arenas) + "\n");
     }
     private void analyzeCapacityByCity(){
         int[] capacities = DataAnalyzer.capacityByCity((inputField.getText()));
-        resultsArea.setText("Capacities by City " + inputField.getText() + ": \n" + string_int(capacities) + "\n");
+        resultsArea.setText("Capacities by City " + inputField.getText() + ": \n" + "-------------------- \n" + string_int(capacities) + "\n");
     }
 
     public void saveScreen(){
