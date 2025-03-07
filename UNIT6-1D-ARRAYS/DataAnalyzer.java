@@ -93,7 +93,8 @@ public class DataAnalyzer{
                 indices.add(i);
             }
         }
-
+        
+        input.setFile("UNIT6-1D-ARRAYS/arenas.txt");
         String[] arenaNames = input.toStringArray(30);
         String[] arenas = new String[indices.size()];
 
@@ -106,13 +107,13 @@ public class DataAnalyzer{
     public static String[] arenasByCapacity(String target){
         input.setFile("UNIT6-1D-ARRAYS/capacities.txt");
         String[] foundList = input.toStringArray(30);
+        System.out.println(target);
         String[] arenas = arenaSearch(foundList, target);        
-        
         return arenas;
     }
     
     public static int[] capacityByCity(String target){
-        input.setFile("UNIT6-1D-ARRAYS/arenas.txt");
+        input.setFile("UNIT6-1D-ARRAYS/locations.txt");
         String[] arenas = input.toStringArray(30);
 
         input.setFile("UNIT6-1D-ARRAYS/capacities.txt");
@@ -121,7 +122,9 @@ public class DataAnalyzer{
         int[] capacities = input.toIntArray(30);
 
         for (int i = 0; i < arenas.length; i++){
+            System.out.println(arenas[i] + ": " + target);
             if(arenas[i].equals(target)){
+                System.out.println("it worked");
                 final_capacities.add(capacities[i]);
             }
         }

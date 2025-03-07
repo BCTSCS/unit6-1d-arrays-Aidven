@@ -59,7 +59,6 @@ public class DataGui extends JFrame {
     }
     private void analyzeCapacityByCity(){
         int[] capacities = DataAnalyzer.capacityByCity((inputField.getText()));
-
         resultsArea.setText("Capacities by City " + inputField.getText() + ": \n" + string_int(capacities) + "\n");
     }
 
